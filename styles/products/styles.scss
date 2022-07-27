@@ -1,0 +1,91 @@
+//PRODUCTS_START
+.products{
+  margin-top: 75px;
+}
+.products__cards{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.card{
+  width: 275px;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #F5F5F5;
+  transition: 0.3s;
+  margin-bottom: 50px;
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.05);
+  }
+  &:hover .basket-form{
+    bottom: 0;
+  }
+}
+.card__inputs-icon{
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  img{
+    max-width: 150px;
+    max-height: 210px;
+  }
+}
+.card__info{
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: white;
+  z-index: 10;
+}
+.card__names{
+  h3{
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 156%;
+    color: #131010;
+  }
+  p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 200%;
+    color: #808080;
+  }
+}
+.card__costs{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 122%;
+  color: #000000;
+}
+.basket-form{
+  z-index: 5;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom: -80px;
+  width: 93%;
+  border-bottom: 3px solid #66A96B;
+  transition: 0.3s;
+  input{
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  button{
+    background: #FFFFFF;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+    &:hover{
+      border: 1px solid #787878;
+    }
+  }
+}
+//PRODUCTS_END

@@ -1,0 +1,37 @@
+.table-wrapper {
+  background: #F5F5F5;
+  padding: 50px;
+  border-radius: 30px;
+  margin-bottom: 100px;
+}
+
+.basket-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  height: auto;
+  border: 2px solid #F5F5F5;
+}
+
+table.basket-table td, table.basket-table th {
+  border: 1px solid #595959;
+}
+
+table.basket-table td, table.basket-table th {
+  padding: 10px;
+  width: 30px;
+  font-size: 18px;
+}
+
+table.basket-table th {
+  background: #347c99;
+  color: #fff;
+  font-weight: normal;
+}
+
+.basket-table__input {
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=styles.css.map */

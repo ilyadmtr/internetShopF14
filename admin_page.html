@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/common.css">
+  <link rel="stylesheet" href="styles/adminPage/styles.css">
+</head>
+<body>
+<div class="header shadow">
+  <div class="wrapper-in">
+    <div class="header__logo">
+      <a class="header__title" href="index.html"><h1>Furnit</h1></a>
+    </div>
+    <nav class="header__nav">
+      <ul>
+        <li><a class="header__item animate" href="products.html">Products</a></li>
+        <li><a class="header__item animate" href="basket.html">Basket</a></li>
+        <li><a class="header__item btn">Admin page</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="wrapper">
+  <section class="admin-page section-page">
+    <div class="title">
+      <h2>Admin Page</h2>
+      <p>An administrator is a person who can think for months before making a quick decision.</p>
+    </div>
+    <div class="table-wrapper">
+      <table class="admin-page-table">
+        <tbody>
+        <tr>
+          <td>ID</td>
+          <td>Title</td>
+          <td>Icon</td>
+          <td>Country</td>
+          <td>Quantity</td>
+          <td>Price</td>
+          <td>Edit</td>
+          <td>Remove</td>
+        </tr>
+
+        <tr class="admin-page-table__item">
+          <td>1.</td>
+          <td>Stylish Grey Chair</td>
+          <td><img src="./media/kreslo.png"/></td>
+          <td>Ukraine</td>
+          <td>2</td>
+          <td>19.99</td>
+          <td><button><img src="./media/icons8-edit-64.png"></button></td>
+          <td><button><img src="./media/trash.png"/></button></td>
+        </tr>
+        <tr class="admin-page-table__item">
+          <td>1.</td>
+          <td>Stylish Grey Chair</td>
+          <td><img src="./media/kreslo.png"/></td>
+          <td>Ukraine</td>
+          <td>2</td>
+          <td>19.99</td>
+          <td><button><img src="./media/icons8-edit-64.png"></button></button></td>
+          <td><button><img src="./media/trash.png"/></button></button></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="create-btn">
+        <button>Create new product</button>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
