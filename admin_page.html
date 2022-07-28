@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <title>Admin Page</title>
   <link rel="stylesheet" href="styles/styles.css">
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
+<style>
+
+</style>
 <body>
 <header class="header shadow">
   <div class="wrapper-in">
@@ -28,7 +32,7 @@
     </div>
     <div class="table-wrapper">
       <table class="admin-page-table">
-        <tbody>
+        <tbody id="admin-page-tbody">
         <tr>
           <td>ID</td>
           <td>Title</td>
@@ -65,6 +69,38 @@
         <button class="create-btn">Create new product</button>
     </div>
   </section>
+   <!-- Popup html  -->
+   <div class="overlay">
+    <div class="from-popup">
+      <h2 class="header-popup">Edit product:</h2>
+      <div class="wrap-popup">
+        <div id="name">
+          <p class="text">Title:</p>
+          <p class="text"> Icon Url:</p>
+          <p class="text">Country:</p>
+          <p class="text">Quantity:</p>
+          <p class="text"> Price:</p>
+        </div>
+        <div class="divform">
+          <form  id="myform" action="">
+            <input class="input-Title input-popup" type="text">
+            <input class="input-Url input-popup" type="url">
+            <input class="input-Contry input-popup" type="text">
+            <input class="input-Quantity input-popup" type="tel">
+            <input class="input-Price input-popup" type="text">
+          </form>
+        </div>
+
+      </div>
+      <div id="eror-Text"></div>
+      <div id="btnDiv">
+        <button class="create-btn" id="end-popup" >Save</button>
+      </div>
+    </div>
+  </div>
+  <!-- Popup html End -->
 </div>
+ 
+  <script src="./script/main.js"></script>
 </body>
 </html>
