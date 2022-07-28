@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/common.css">
-    <link rel="stylesheet" href="styles/products/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-<div class="header shadow">
+<header class="header shadow">
     <div class="wrapper-in">
-    <div class="header__logo">
-        <a class="header__title" href="index.html"><h1>Furnit</h1></a>
+        <div class="header__logo">
+            <a class="header__title" href="index.html"><h1>Furnit</h1></a>
+        </div>
+        <nav class="header__nav">
+            <ul>
+                <li><a class="header__item animate current">Products</a></li>
+                <li><a class="header__item animate" href="basket.html">Basket</a></li>
+                <li><a class="header__item btn" href="admin_page.html">Admin page</a></li>
+            </ul>
+        </nav>
     </div>
-    <nav class="header__nav">
-        <ul>
-            <li><a class="header__item animate current">Products</a></li>
-            <li><a class="header__item animate" href="basket.html">Basket</a></li>
-            <li><a class="header__item btn" href="admin_page.html">Admin page</a></li>
-        </ul>
-    </nav>
-    </div>
-</div>
+</header>
 <div class="wrapper">
     <section class="products section-page">
         <div class="title">
@@ -33,7 +31,16 @@
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">
-                        <input type="text" placeholder="Enter the number">
+                        <div class="basket-form__input">
+                            <button class="number-minus" type="button"
+                                    onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-
+                            </button>
+                            <input type="number" placeholder='Enter quantity' min="1">
+                            <button class="number-plus" type="button"
+                                    onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                                +
+                            </button>
+                        </div>
                         <button>Add</button>
                     </div>
                 </div>
@@ -51,7 +58,16 @@
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">
-                        <input type="text" placeholder="Enter the number">
+                        <div class="basket-form__input">
+                            <button class="number-minus" type="button"
+                                    onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-
+                            </button>
+                            <input type="number" placeholder='Enter quantity' min="1">
+                            <button class="number-plus" type="button"
+                                    onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                                +
+                            </button>
+                        </div>
                         <button>Add</button>
                     </div>
                 </div>
@@ -69,7 +85,16 @@
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">
-                        <input type="text" placeholder="Enter the number">
+                        <div class="basket-form__input">
+                            <button class="number-minus" type="button"
+                                    onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-
+                            </button>
+                            <input type="number" placeholder='Enter quantity' min="1">
+                            <button class="number-plus" type="button"
+                                    onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                                +
+                            </button>
+                        </div>
                         <button>Add</button>
                     </div>
                 </div>
@@ -87,7 +112,16 @@
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">
-                        <input type="text" placeholder="Enter the number">
+                        <div class="basket-form__input">
+                            <button class="number-minus" type="button"
+                                    onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-
+                            </button>
+                            <input type="number" placeholder='Enter quantity' min="1">
+                            <button class="number-plus" type="button"
+                                    onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                                +
+                            </button>
+                        </div>
                         <button>Add</button>
                     </div>
                 </div>
@@ -105,7 +139,16 @@
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">
-                        <input type="text" placeholder="Enter the number">
+                        <div class="basket-form__input">
+                            <button class="number-minus" type="button"
+                                    onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.onchange();">-
+                            </button>
+                            <input type="number" placeholder='Enter quantity' min="1">
+                            <button class="number-plus" type="button"
+                                    onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.onchange();">
+                                +
+                            </button>
+                        </div>
                         <button>Add</button>
                     </div>
                 </div>
