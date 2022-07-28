@@ -56,15 +56,6 @@ table {
 }
 //WRAPPERS
 
-.section-page{
-  margin-top: 50px;
-}
-
-.shadow{
-  box-shadow: 0 1px 19px 1px rgba(0, 0, 0, 0.18);
-}
-
-
 //HEADER_START
 .header{
   background: #66A96B;
@@ -167,8 +158,94 @@ table {
   }
   margin-bottom: 40px;
 }
+.section-page{
+  margin-top: 50px;
+}
+.shadow{
+  box-shadow: 0 1px 19px 1px rgba(0, 0, 0, 0.18);
+}
 //common_end
 
+//MAIN-INFO_START
+.index-body{
+  background: #66A96B;
+}
+.main-page{
+  width: 100%;
+  margin-top: 92px;
+}
+.main-info{
+  width: 100%;
+  margin-top: 58px;
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    top: 150px;
+    width: 753px;
+    height: 314px;
+    right: 0;
+    background: url('../media/gray-sofa.png') 100% no-repeat;
+  }
+  &:before{
+    content: '';
+    position: absolute;
+    top: -50px;
+    width: 307px;
+    height: 203px;
+    right: 225px;
+    background: url('../media/set-gallery.png') 100% no-repeat;
+  }
+}
+.main-info__text-block{
+  width: 430px;
+  h2{
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 55px;
+    line-height: 68px;
+    margin-bottom: 17px;
+  }
+  p{
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 165%;
+    color: #E8FFE9;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.72);
+    margin-bottom: 68px;
+  }
+
+}
+.main-info__btn{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  padding: 14px 33px;
+  box-shadow: 4px 8px 40px rgba(59, 95, 65, 0.31);
+  border-radius: 30px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, #fff 50%, transparent 50%);
+  background-position: 99%;
+  background-size: 500%;
+  transition: 500ms ease-in-out;
+  &:hover{
+    background-position: -1px;
+    color: #3B5F41;
+  }
+}
+.white{
+  color: #3B5F41;
+  background: #FFFFFF;
+  margin-right: 22px;
+  &:hover{
+    background: transparent;
+    color: #FFFFFF;
+  }
+}
+//MAIN-INFO_END
 
 
 //PRODUCTS_START
@@ -380,10 +457,8 @@ table.admin-page-table th {
   }
 }
 .create-btn{
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  button{
+    display: block;
+    margin: 60px auto 0 auto;
     background: white;
     padding: 16px 30px;
     border: 2px solid #595959;
@@ -394,87 +469,7 @@ table.admin-page-table th {
       background: #66A96B;
       color: white;
     }
-  }
 }
 //ADMIN-PAGE-TABLE-SECTION_START
 
-//MAIN-INFO_START
-.index-body{
-  background: #66A96B;
-}
-.main-page{
-  width: 100%;
-  margin-top: 92px;
-}
-.main-info{
-  width: 100%;
-  margin-top: 58px;
-  position: relative;
-  &:after{
-    content: '';
-    position: absolute;
-    top: 150px;
-    width: 753px;
-    height: 314px;
-    right: 0;
-    background: url('../media/gray-sofa.png') 100% no-repeat;
-  }
-  &:before{
-    content: '';
-    position: absolute;
-    top: -50px;
-    width: 307px;
-    height: 203px;
-    right: 225px;
-    background: url('../media/set-gallery.png') 100% no-repeat;
-  }
-}
-.main-info__text-block{
-  width: 430px;
-  h2{
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 55px;
-    line-height: 68px;
-    margin-bottom: 17px;
-  }
-  p{
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 165%;
-    color: #E8FFE9;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.72);
-    margin-bottom: 68px;
-  }
 
-}
-.main-info__btn{
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 25px;
-  padding: 14px 33px;
-  box-shadow: 4px 8px 40px rgba(59, 95, 65, 0.31);
-  border-radius: 30px;
-  border: 2px solid white;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  background-image: linear-gradient(45deg, #fff 50%, transparent 50%);
-  background-position: 99%;
-  background-size: 500%;
-  transition: 500ms ease-in-out;
-  &:hover{
-    background-position: -1px;
-    color: #3B5F41;
-  }
-}
-.white{
-  color: #3B5F41;
-  background: #FFFFFF;
-  margin-right: 22px;
-  &:hover{
-    background: transparent;
-    color: #FFFFFF;
-  }
-}
-//MAIN-INFO_END
