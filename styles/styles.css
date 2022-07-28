@@ -167,6 +167,39 @@ table {
   box-shadow: 0 1px 19px 1px rgba(0, 0, 0, 0.18);
 }
 
+.counter-form-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+.counter-form-input input {
+  text-align: center;
+  font-size: 16px;
+  padding: 10px 10px;
+  width: 50%;
+  outline: none;
+}
+.counter-form-input input::-webkit-outer-spin-button, .counter-form-input input::-webkit-inner-spin-button {
+  display: none;
+}
+.counter-form-input button {
+  cursor: pointer;
+  border: 2px solid white;
+  background: #787878;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  transition: 0.3s;
+}
+.counter-form-input button:hover {
+  background: white;
+  color: black;
+  border: 2px solid #787878;
+}
+
 .index-body {
   background: #66A96B;
 }
@@ -331,48 +364,16 @@ table {
   border-bottom: 3px solid #66A96B;
   transition: 0.3s;
 }
-.basket-form button {
+.basket-form .add-button {
   background: #FFFFFF;
   padding: 10px;
   cursor: pointer;
   border: 1px solid #FFFFFF;
 }
-.basket-form button:hover {
+.basket-form .add-button:hover {
   border: 1px solid #787878;
   background: #787878;
   color: #fff;
-}
-
-.basket-form__input {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-}
-.basket-form__input input {
-  text-align: center;
-  font-size: 16px;
-  padding: 10px 10px;
-  width: 50%;
-  outline: none;
-}
-.basket-form__input input::-webkit-outer-spin-button, .basket-form__input input::-webkit-inner-spin-button {
-  display: none;
-}
-.basket-form__input button {
-  border: 2px solid white;
-  background: #787878;
-  color: white;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  transition: 0.3s;
-}
-.basket-form__input button:hover {
-  background: white;
-  color: black;
-  border: 2px solid #787878;
 }
 
 .table-wrapper {
@@ -479,6 +480,10 @@ table.admin-page-table th {
 .create-btn:hover {
   background: #66A96B;
   color: white;
+}
+
+.input-td .counter-form-input {
+  margin: auto;
 }
 
 /*# sourceMappingURL=styles.css.map */

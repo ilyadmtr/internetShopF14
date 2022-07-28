@@ -164,6 +164,39 @@ table {
 .shadow{
   box-shadow: 0 1px 19px 1px rgba(0, 0, 0, 0.18);
 }
+.counter-form-input{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  input {
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 10px;
+    width: 50%;
+    outline: none;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+  }
+  button{
+    cursor: pointer;
+    border: 2px solid white;
+    background: #787878;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    transition: 0.3s;
+    &:hover{
+      background: white;
+      color: black;
+      border: 2px solid #787878;
+    }
+  }
+}
 //common_end
 
 //MAIN-INFO_START
@@ -322,10 +355,9 @@ table {
   justify-content: space-between;
   bottom: -80px;
   width: 93%;
-  //padding: 0 10px;
   border-bottom: 3px solid #66A96B;
   transition: 0.3s;
-  button{
+  .add-button{
     background: #FFFFFF;
     padding: 10px;
     cursor: pointer;
@@ -337,38 +369,7 @@ table {
     }
   }
 }
-.basket-form__input{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
-  input {
-    text-align: center;
-    font-size: 16px;
-    padding: 10px 10px;
-    width: 50%;
-    outline: none;
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      display: none;
-    }
-  }
-  button{
-    border: 2px solid white;
-    background: #787878;
-    color: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    transition: 0.3s;
-    &:hover{
-      background: white;
-      color: black;
-      border: 2px solid #787878;
-    }
-  }
-}
+
 //PRODUCTS_END
 
 
@@ -469,6 +470,11 @@ table.admin-page-table th {
       background: #66A96B;
       color: white;
     }
+}
+.input-td{
+  .counter-form-input{
+    margin: auto;
+  }
 }
 //ADMIN-PAGE-TABLE-SECTION_START
 
