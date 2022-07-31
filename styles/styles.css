@@ -485,7 +485,7 @@ table.admin-page-table th {
 .overlay {
   position: absolute;
   width: 100%;
-  height: 170vh;
+  height: 150vh;
   top: 0;
   left: 0;
   display: none;
