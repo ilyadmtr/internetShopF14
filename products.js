@@ -51,7 +51,7 @@ function loadProducts() {
                             <button class="number-minus" type="button"
                                     onclick="this.nextElementSibling.stepDown()">-
                             </button>
-                            <input class="quantity" type="number" placeholder='Enter quantity' min="1" max="${products.amount}">
+                            <input class="quantity" type="number" placeholder='Enter quantity' min="1" max="${products.amount}" disabled>
                             <button class="number-plus" type="button"
                                     onclick="this.previousElementSibling.stepUp()">
                                 +
@@ -69,8 +69,7 @@ function loadProducts() {
                         ${products.price} ₴
                     </h3>
                 </div>
-          </div>  
-          `
+          </div>            `
 
         let products__cards = document.querySelector('.products__cards');
         products__cards.insertAdjacentHTML('beforeend', outProducts);
@@ -82,22 +81,24 @@ function loadProducts() {
 }
 
 //добавляем в корзину
-function addProductsToBasket(){
-    
-      
-    let idProducts = $(this).attr('data-id');
-    // let inputProducts = document.querySelector('.quantity');
-    
-        
-    //проверяем по id
+function addProductsToBasket(e){
+    e.preventDefault();   
+    let idProducts = $(this).attr('data-id'),
+        inputProductsField = $(this).closest('.card').find('input'),
+        quantityProducts = parseInt($(inputProductsField).val());
+    //проверяем наличие в корзине
     if (basketArrProducts[idProducts] != undefined){
-        basketArrProducts[idProducts]++;
+        basketArrProducts[idProducts] = basketArrProducts[idProducts]+quantityProducts;   
     }else{
-        basketArrProducts[idProducts] = 1;
-    }
-    localStorage.setItem('basket',JSON.stringify(basketArrProducts));
-    console.log(basketArrProducts);
+        basketArrProducts[idProducts]=quantityProducts;
+    } 
 
+    localStorage.setItem('basket',JSON.stringify(basketArrProducts));
+    // console.log(basketArrProducts);
+
+    $('.quantity').val('');
+    $(this).html('Added');
+    $(this).attr('disabled', true);
 }
 
 function checkProductsBasket(){
