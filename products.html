@@ -11,13 +11,20 @@
         <div class="header__logo">
             <a class="header__title" href="index.html"><h1>Furnit</h1></a>
         </div>
-        <nav class="header__nav">
-            <ul>
-                <li><a class="header__item animate current">Products</a></li>
-                <li><a class="header__item animate" href="basket.html">Basket</a></li>
-                <li><a class="header__item btn" href="admin_page.html">Admin page</a></li>
-            </ul>
-        </nav>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn other_menus" for="menu__toggle">
+                <span></span>
+            </label>
+
+            <nav class="header__nav hamburger-menu__nav">
+                <ul>
+                    <li><a class="header__item animate menu__item current" href="products.html">Products</a></li>
+                    <li><a class="header__item animate menu__item" href="basket.html">Basket</a></li>
+                    <li><a class="header__item btn menu__item" href="admin_page.html">Admin page</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </header>
 <div class="wrapper">
@@ -27,7 +34,62 @@
             <p>A smarter way to designing your space, enroll and enjoy</p>
         </div>
         <div class="products__cards">
-            <div class="card">
+            <div class="card" data-id="1">
+                <div class="card__inputs-icon">
+                    <img src="./media/kreslo.png"/>
+                    <div class="basket-form">
+                        <div class="counter-form-input">
+                            <button class="number-minus" type="button"
+                                    onclick="this.nextElementSibling.stepDown()">-
+                            </button>
+                            <input type="number" placeholder='Enter quantity' min="1">
+                            <button class="number-plus" type="button"
+                                    onclick="this.previousElementSibling.stepUp()">
+                                +
+                            </button>
+                        </div>
+                        <button class="add-button">Add</button>
+                    </div>
+                </div>
+                <div class="card__info">
+                    <div class="card__names">
+                        <h3>Stylish Grey Chair</h3>
+                        <p>Ukraine</p>
+                        <span class="card__id">#1</span>
+                    </div>
+                    <h3 class="card__costs">
+                        $19.99
+                    </h3>
+                </div>
+            </div>
+            <div class="card" data-id="2">
+                <div class="card__inputs-icon" >
+                    <img src="./media/kreslo.png"/>
+                    <div class="basket-form">
+                        <div class="counter-form-input">
+                            <button class="number-minus" type="button"
+                                    onclick="this.nextElementSibling.stepDown()">-
+                            </button>
+                            <input type="number" placeholder='Enter quantity' min="1">
+                            <button class="number-plus" type="button"
+                                    onclick="this.previousElementSibling.stepUp()">
+                                +
+                            </button>
+                        </div>
+                        <button class="add-button">Add</button>
+                    </div>
+                </div>
+                <div class="card__info">
+                    <div class="card__names">
+                        <h3>Stylish Grey Chair</h3>
+                        <p>Ukraine</p>
+                    </div>
+                    <h3 class="card__costs">
+                        $19.99
+                    </h3>
+                </div>
+            </div>
+            <div class="card" data-id="3">
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">
@@ -54,7 +116,7 @@
                     </h3>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" data-id="4">
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">
@@ -81,61 +143,7 @@
                     </h3>
                 </div>
             </div>
-            <div class="card">
-                <div class="card__inputs-icon">
-                    <img src="./media/kreslo.png"/>
-                    <div class="basket-form">
-                        <div class="counter-form-input">
-                            <button class="number-minus" type="button"
-                                    onclick="this.nextElementSibling.stepDown()">-
-                            </button>
-                            <input type="number" placeholder='Enter quantity' min="1">
-                            <button class="number-plus" type="button"
-                                    onclick="this.previousElementSibling.stepUp()">
-                                +
-                            </button>
-                        </div>
-                        <button class="add-button">Add</button>
-                    </div>
-                </div>
-                <div class="card__info">
-                    <div class="card__names">
-                        <h3>Stylish Grey Chair</h3>
-                        <p>Ukraine</p>
-                    </div>
-                    <h3 class="card__costs">
-                        $19.99
-                    </h3>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card__inputs-icon">
-                    <img src="./media/kreslo.png"/>
-                    <div class="basket-form">
-                        <div class="counter-form-input">
-                            <button class="number-minus" type="button"
-                                    onclick="this.nextElementSibling.stepDown()">-
-                            </button>
-                            <input type="number" placeholder='Enter quantity' min="1">
-                            <button class="number-plus" type="button"
-                                    onclick="this.previousElementSibling.stepUp()">
-                                +
-                            </button>
-                        </div>
-                        <button class="add-button">Add</button>
-                    </div>
-                </div>
-                <div class="card__info">
-                    <div class="card__names">
-                        <h3>Stylish Grey Chair</h3>
-                        <p>Ukraine</p>
-                    </div>
-                    <h3 class="card__costs">
-                        $19.99
-                    </h3>
-                </div>
-            </div>
-            <div class="card">
+            <div class="card" data-id="5">
                 <div class="card__inputs-icon">
                     <img src="./media/kreslo.png"/>
                     <div class="basket-form">

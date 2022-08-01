@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Furnit</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/media.scss">
 </head>
 <body class="index-body">
 <div class="wrapper">
@@ -12,13 +13,20 @@
             <div class="header__logo">
                 <a class="header__title"><h1>Furnit</h1></a>
             </div>
-            <nav class="header__nav">
-                <ul>
-                    <li><a class="header__item animate" href="products.html">Products</a></li>
-                    <li><a class="header__item animate" href="basket.html">Basket</a></li>
-                    <li><a class="header__item btn" href="admin_page.html">Admin page</a></li>
-                </ul>
-            </nav>
+            <div class="hamburger-menu">
+                <input id="menu__toggle" type="checkbox" />
+                <label class="menu__btn" for="menu__toggle">
+                    <span></span>
+                </label>
+
+                <nav class="header__nav hamburger-menu__nav">
+                    <ul>
+                        <li><a class="header__item animate menu__item" href="products.html">Products</a></li>
+                        <li><a class="header__item animate menu__item" href="basket.html">Basket</a></li>
+                        <li><a class="header__item btn menu__item" href="admin_page.html">Admin page</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <div class="main-info">
             <div class="main-info__text-block">
@@ -34,6 +42,8 @@
                     </a>
                 </div>
             </div>
+            <img src="./media/gray-sofa.png" class="main-info__bc-sofa">
+            <img src="./media/set-gallery.png" class="main-info__bc-gallery">
         </div>
     </section>
 </div>

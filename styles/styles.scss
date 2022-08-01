@@ -1,6 +1,7 @@
 /*fonts */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+
 //reset_start
 *{
   margin: 0;
@@ -137,6 +138,16 @@ table {
     color: white;
   }
 }
+#menu__toggle {
+  display: none;
+  z-index: 15;
+}
+.menu__btn {
+  display: none;
+  z-index: 15;
+}
+
+
 //HEADER_END
 
 .title{
@@ -209,26 +220,22 @@ table {
 }
 .main-info{
   width: 100%;
-  margin-top: 58px;
+  margin-top: 123px;
   position: relative;
-  &:after{
-    content: '';
-    position: absolute;
-    top: 150px;
-    width: 753px;
-    height: 314px;
-    right: 0;
-    background: url('../media/gray-sofa.png') 100% no-repeat;
-  }
-  &:before{
-    content: '';
-    position: absolute;
-    top: -50px;
-    width: 307px;
-    height: 203px;
-    right: 225px;
-    background: url('../media/set-gallery.png') 100% no-repeat;
-  }
+}
+.main-info__bc-sofa{
+  display: block;
+  position: absolute;
+  top: 150px;
+  width: 753px;
+  right: 0;
+}
+.main-info__bc-gallery{
+  display: block;
+  position: absolute;
+  top: -25%;
+  width: 376px;
+  right: 15%;
 }
 .main-info__text-block{
   width: 430px;
@@ -329,6 +336,7 @@ table {
   z-index: 10;
 }
 .card__names{
+  position: relative;
   h3{
     font-weight: 600;
     font-size: 17px;
@@ -341,6 +349,11 @@ table {
     line-height: 200%;
     color: #808080;
   }
+}
+.card__id{
+  position: absolute;
+  font-size: 10px;
+  color: rgba(128, 128, 128, 0.59);
 }
 .card__costs{
   font-weight: 600;
@@ -379,9 +392,10 @@ table {
   padding: 50px;
   border-radius: 30px;
   margin-bottom: 100px;
+  overflow: auto;
 }
 .basket-table{
-  width: 100%;
+  width: 1135px;
   border-collapse:collapse;
   border-spacing:0;
   height: auto;
@@ -417,9 +431,10 @@ table.basket-table th {
   padding: 50px;
   border-radius: 30px;
   margin-bottom: 100px;
+  overflow: auto;
 }
 .admin-page-table{
-  width: 100%;
+  width: 1135px;
   border-collapse:collapse;
   border-spacing:0;
   height: auto;
@@ -477,5 +492,8 @@ table.admin-page-table th {
   }
 }
 //ADMIN-PAGE-TABLE-SECTION_START
+
+//MEDIA
+@import "media";
 
 
