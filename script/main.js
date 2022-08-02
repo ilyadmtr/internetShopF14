@@ -62,16 +62,22 @@ function createNewProduct() {
 
   if (innerIdAdmin.length == 0) {
     erorTextAdmin.innerText = "Заполните все поля!";
+    return;
   } else if (inputTitleAdmin.length == 0) {
     erorTextAdmin.innerText = "Заполните все поля!";
+    return;
   } else if (inputUrlAdmin.length == 0) {
     erorTextAdmin.innerText = "Заполните все поля!";
+    return;
   } else if (inputContryAdmin.length == 0) {
     erorTextAdmin.innerText = "Заполните все поля!";
+    return;
   } else if (inputPriceAdmin.length == 0) {
     erorTextAdmin.innerText = "Заполните все поля!";
+    return;
   } else if (inputQuantityAdmin <= 0 || inputQuantityAdmin.length == 0) {
     erorTextAdmin.innerText = 'Не вводите "-" значения или заполните поле!';
+    return;
   } else {
     $("#eror-Text").empty();
 
@@ -140,12 +146,7 @@ function newProduct(
   let btnEditAdmin = document.createElement("button");
   btnEditAdmin.addEventListener("click", () => {
     showEditProduct(
-      innerIdAdmin,
-      inputTitleAdmin,
-      inputUrlAdmin,
-      inputContryAdmin,
-      inputQuantityAdmin,
-      inputPriceAdmin
+      trAdmin
     );
   });
 
@@ -202,13 +203,9 @@ function clearInputs() {
   action = "";
 }
 
+let id = '';
 function showEditProduct(
-  innerIdAdmin,
-  inputTitleAdmin,
-  inputUrlAdmin,
-  inputContryAdmin,
-  inputQuantityAdmin,
-  inputPriceAdmin
+  row
 ) {
   let createBtn = document.querySelector(".create-btn");
   createBtn.click();
@@ -222,12 +219,19 @@ function showEditProduct(
   let inputQuantity = document.querySelector(".input-Quantity");
   let inputPrice = document.querySelector(".input-Price");
 
-  inputId.value = innerIdAdmin;
-  inputTitle.value = inputTitleAdmin;
-  inputUrl.value = inputUrlAdmin;
-  inputContry.value = inputContryAdmin;
-  inputQuantity.value = inputQuantityAdmin;
-  inputPrice.value = inputPriceAdmin;
+  let cells = row.querySelectorAll('td');
+
+  id = cells[0].textContent;
+
+  inputId.value = cells[0].textContent;
+  inputTitle.value = cells[1].textContent;
+
+  let img = cells[2].querySelector('img');
+  inputUrl.value = img.src;
+
+  inputContry.value = cells[3].textContent;
+  inputQuantity.value = cells[4].textContent;
+  inputPrice.value = cells[5].textContent;
 }
 
 function checkEditedProduct() {
@@ -260,7 +264,7 @@ function checkEditedProduct() {
   } else {
     $("#eror-Text").empty();
 
-    editProduct(innerIdAdmin);
+    editProduct();
 
     document.getElementById("myform").reset();
     $(".overlay").fadeOut();
@@ -268,6 +272,7 @@ function checkEditedProduct() {
   }
 
   action = "";
+  id = '';
 
   inputTitleAdmin = "";
   inputUrlAdmin = "";
@@ -277,9 +282,9 @@ function checkEditedProduct() {
   innerIdAdmin = "";
 }
 
-function editProduct(productID) {
+function editProduct() {
   for (let i = 0; i < producsArr.length; i++) {
-    if (producsArr[i].id == productID) {
+    if (producsArr[i].id == id) {
       let inputTitleAdmin = $(".input-Title").val();
       let inputUrlAdmin = $(".input-Url").val();
       let inputContryAdmin = $(".input-Contry").val();
@@ -295,7 +300,6 @@ function editProduct(productID) {
       producsArr[i].price = inputPriceAdmin;
 
       updateProductView(
-        productID,
         innerIdAdmin,
         inputTitleAdmin,
         inputUrlAdmin,
@@ -310,7 +314,6 @@ function editProduct(productID) {
 }
 
 function updateProductView(
-  productID,
   newId,
   name,
   iconUrl,
@@ -323,7 +326,7 @@ function updateProductView(
   rows.forEach((row) => {
     let cells = row.querySelectorAll("td");
 
-    if (cells[0].textContent == productID) {
+    if (cells[0].textContent == id) {
       cells[0].innerHTML = newId;
       cells[1].innerHTML = name;
 
@@ -333,6 +336,8 @@ function updateProductView(
       cells[3].innerHTML = country;
       cells[4].innerHTML = amount;
       cells[5].innerHTML = price;
+
+      row.setAttribute('data-id', newId);
     }
   });
 }
