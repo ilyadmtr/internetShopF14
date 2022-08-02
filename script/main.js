@@ -6,77 +6,90 @@ $('.create-btn').click(function () {
 });
 
 
-let producsArr = []; // Object NewProduct 
+
+var producsArr = []; // Object NewProduct 
+
+var inputTitleAdmin = $('.input-Title').val();
+var inputUrlAdmin = $('.input-Url').val();
+var inputContryAdmin = $('.input-Contry').val();
+var inputQuantityAdmin = $('.input-Quantity').val();
+var inputPriceAdmin = $('.input-Price').val();
+var innerIdAdmin = $('.input-Id').val();
+var erorTextAdmin = document.getElementById
+  ('eror-Text');
+
 
 
 let btnPopupAdmin = document.getElementById('end-popup');
 btnPopupAdmin.addEventListener('click', function (event) {
-  let inputTitleAdmin = $('.input-Title').val();
-  let inputUrlAdmin = $('.input-Url').val();
-  let inputContryAdmin = $('.input-Contry').val();
-  let inputQuantityAdmin = $('.input-Quantity').val();
-  let inputPriceAdmin = $('.input-Price').val();
-  let innerIdAdmin = $('.input-Id').val();
-  let erorTextAdmin = document.getElementById
+  var inputTitleAdmin = $('.input-Title').val();
+  var inputUrlAdmin = $('.input-Url').val();
+  var inputContryAdmin = $('.input-Contry').val();
+  var inputQuantityAdmin = $('.input-Quantity').val();
+  var inputPriceAdmin = $('.input-Price').val();
+  var innerIdAdmin = $('.input-Id').val();
+  var erorTextAdmin = document.getElementById
     ('eror-Text');
 
 
-  // Object NewProduct  Start
+  // Set localStorage Start
+
   function productObject(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin) {
-    let arrAdmin = {
-      name: inputTitleAdmin,
+
+    var arrAdmin = {
       id: innerIdAdmin,
+      name: inputTitleAdmin,
       country: inputContryAdmin,
       amount: inputQuantityAdmin,
       price: inputPriceAdmin,
       iconURl: inputUrlAdmin
     };
     producsArr.push(arrAdmin);
+
     return localStorage.setItem('products', JSON.stringify(producsArr));
+
   }
-console.log(producsArr);
-  productObject(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin);
+
+ 
+      productObject(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin);
+  
 
 
   // Object NewProduct End
 
 
-  // /Проверка   товарa
+  // /Проверка   введенных данных в input
+ 
   
-
-
   if (innerIdAdmin.length == 0) {
+  erorTextAdmin.innerText = 'Заполните все поля!';
+} else
+  if (inputTitleAdmin.length == 0) {
     erorTextAdmin.innerText = 'Заполните все поля!';
   } else
-    if (inputTitleAdmin.length == 0) {
+    if (inputUrlAdmin.length == 0) {
       erorTextAdmin.innerText = 'Заполните все поля!';
     } else
-      if (inputUrlAdmin.length == 0) {
+      if (inputContryAdmin.length == 0) {
         erorTextAdmin.innerText = 'Заполните все поля!';
       } else
-        if (inputContryAdmin.length == 0) {
+        if (inputPriceAdmin.length == 0) {
           erorTextAdmin.innerText = 'Заполните все поля!';
         } else
-          if (inputPriceAdmin.length == 0) {
-            erorTextAdmin.innerText = 'Заполните все поля!';
-          } else
-            if (inputQuantityAdmin <= 0 || inputQuantityAdmin.length == 0) {
-              erorTextAdmin.innerText = 'Не вводите "-" значения или заполните поле!';
-            } else {
-          
-              $('#eror-Text').empty();
+          if (inputQuantityAdmin <= 0 || inputQuantityAdmin.length == 0) {
+            erorTextAdmin.innerText = 'Не вводите "-" значения или заполните поле!';
+          } else {
 
-              newProduct(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin);
+            $('#eror-Text').empty();
+            newProduct();
+            document.getElementById('myform').reset();
+            $('.overlay').fadeOut();
+            $('.admin-page').css('filter', 'none');
 
-
-              document.getElementById('myform').reset();
-              $('.overlay').fadeOut();
-              $('.admin-page').css('filter', 'none');
-
-            };
+          }
 
 
-// /Проверка завершина
+  // /Проверка завершина
 });
 
 $(document).mouseup(function (event) {
@@ -87,56 +100,118 @@ $(document).mouseup(function (event) {
   }
 });
 //Popup Script end
+//Получение данных с localStorage
+function getPeoducts() {
+  return JSON.parse(localStorage.getItem('products'));
+}
 
-let itemId;
-let trAdmin;
+//
 
-//New Product
-function newProduct(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin) {
-  let tbodyAdmin = document.getElementById('admin-page-tbody');
-  let trAdmin = document.createElement('tr');
-  trAdmin.className = 'admin-page-table__item';
-  trAdmin.setAttribute('data-id', `${innerIdAdmin}`);
-  let itemId = trAdmin.getAttribute('data-id');
-  console.log(itemId);
-  let idAdmin = document.createElement('td');
-  let TitleAdmin = document.createElement('td');
-  let IconAdmin = document.createElement('td');
-  let URLimgAdmin = document.createElement('img');
-  let CountryAdmin = document.createElement('td');
-  let QuantitydAdmin = document.createElement('td');
-  let PricedAdmin = document.createElement('td');
-  let EditAdmin = document.createElement('td');
-  let btnEditAdmin = document.createElement('button');
-  let imgEditAdmin = document.createElement('img');
-  imgEditAdmin.src = "./media/icons8-edit-64.png";
-  let RemoveAdmin = document.createElement('td');
-  let btnRemoveAdmin = document.createElement('button');
-  let imgRemoveAdmin = document.createElement('img');
-  imgRemoveAdmin.src = "./media/trash.png";
-  idAdmin.innerText = innerIdAdmin;
-  CountryAdmin.innerText = inputContryAdmin;
-  QuantitydAdmin.innerText = inputQuantityAdmin;
-  TitleAdmin.innerText = inputTitleAdmin;
-  PricedAdmin.innerText = inputPriceAdmin;
-  URLimgAdmin.src = inputUrlAdmin;
-  IconAdmin.append(URLimgAdmin);
-  EditAdmin.append(btnEditAdmin);
-  btnEditAdmin.append(imgEditAdmin);
-  RemoveAdmin.append(btnRemoveAdmin);
-  RemoveAdmin.append(imgRemoveAdmin);
-  trAdmin.append(idAdmin);
-  trAdmin.append(TitleAdmin);
-  trAdmin.append(IconAdmin);
-  trAdmin.append(CountryAdmin);
-  trAdmin.append(QuantitydAdmin);
-  trAdmin.append(PricedAdmin);
-  trAdmin.append(EditAdmin);
-  trAdmin.append(RemoveAdmin);
-  tbodyAdmin.append(trAdmin);
+//Что бы товары оставись на вкладке
+window.addEventListener('load', function () {
+  var newProductAdmin = getPeoducts();
+  console.log(newProductAdmin);
+  if (newProductAdmin !== null) {
+    //Перебор данных
+    for (var key in newProductAdmin) {
 
+      var tbodyAdmin = document.getElementById('admin-page-tbody');
+      var trAdmin = document.createElement('tr');
+      trAdmin.className = 'admin-page-table__item';
+      var idAdmin = document.createElement('td');
+      var TitleAdmin = document.createElement('td');
+      var IconAdmin = document.createElement('td');
+      var URLimgAdmin = document.createElement('img');
+      var CountryAdmin = document.createElement('td');
+      var QuantitydAdmin = document.createElement('td');
+      var PricedAdmin = document.createElement('td');
+      var EditAdmin = document.createElement('td');
+      var btnEditAdmin = document.createElement('button');
+      var imgEditAdmin = document.createElement('img');
+      imgEditAdmin.src = "./media/icons8-edit-64.png";
+      var RemoveAdmin = document.createElement('td');
+      var btnRemoveAdmin = document.createElement('button');
+      var imgRemoveAdmin = document.createElement('img');
+      imgRemoveAdmin.src = "./media/trash.png";
+      idAdmin.innerText = newProductAdmin[key].id;
+      CountryAdmin.innerText = newProductAdmin[key].name;
+      QuantitydAdmin.innerText = newProductAdmin[key].amount;
+      TitleAdmin.innerText = newProductAdmin[key].name;
+      PricedAdmin.innerText = newProductAdmin[key].price;
+      URLimgAdmin.src = newProductAdmin[key].iconURl;
+      IconAdmin.append(URLimgAdmin);
+      EditAdmin.append(btnEditAdmin);
+      btnEditAdmin.append(imgEditAdmin);
+      RemoveAdmin.append(btnRemoveAdmin);
+      RemoveAdmin.append(imgRemoveAdmin);
+      trAdmin.append(idAdmin);
+      trAdmin.append(TitleAdmin);
+      trAdmin.append(IconAdmin);
+      trAdmin.append(CountryAdmin);
+      trAdmin.append(QuantitydAdmin);
+      trAdmin.append(PricedAdmin);
+      trAdmin.append(EditAdmin);
+      trAdmin.append(RemoveAdmin);
+      tbodyAdmin.append(trAdmin);
 
+    }
+  }
+});
+//
 
+// New Product
+
+function newProduct() {
+
+  var newProductAdmin = getPeoducts();
+  if (newProductAdmin !== null) {
+    //Перебор данных
+
+    for (var key in newProductAdmin) {
+
+    }
+    var tbodyAdmin = document.getElementById('admin-page-tbody');
+    var trAdmin = document.createElement('tr');
+    trAdmin.className = 'admin-page-table__item';
+    var idAdmin = document.createElement('td');
+    var TitleAdmin = document.createElement('td');
+    var IconAdmin = document.createElement('td');
+    var URLimgAdmin = document.createElement('img');
+    var CountryAdmin = document.createElement('td');
+    var QuantitydAdmin = document.createElement('td');
+    var PricedAdmin = document.createElement('td');
+    var EditAdmin = document.createElement('td');
+    var btnEditAdmin = document.createElement('button');
+    var imgEditAdmin = document.createElement('img');
+    imgEditAdmin.src = "./media/icons8-edit-64.png";
+    var RemoveAdmin = document.createElement('td');
+    var btnRemoveAdmin = document.createElement('button');
+    var imgRemoveAdmin = document.createElement('img');
+    imgRemoveAdmin.src = "./media/trash.png";
+    idAdmin.innerText = newProductAdmin[key].id;
+    CountryAdmin.innerText = newProductAdmin[key].name;
+    QuantitydAdmin.innerText = newProductAdmin[key].amount;
+    TitleAdmin.innerText = newProductAdmin[key].name;
+    PricedAdmin.innerText = newProductAdmin[key].price;
+    URLimgAdmin.src = newProductAdmin[key].iconURl;
+    IconAdmin.append(URLimgAdmin);
+    EditAdmin.append(btnEditAdmin);
+    btnEditAdmin.append(imgEditAdmin);
+    RemoveAdmin.append(btnRemoveAdmin);
+    RemoveAdmin.append(imgRemoveAdmin);
+    trAdmin.append(idAdmin);
+    trAdmin.append(TitleAdmin);
+    trAdmin.append(IconAdmin);
+    trAdmin.append(CountryAdmin);
+    trAdmin.append(QuantitydAdmin);
+    trAdmin.append(PricedAdmin);
+    trAdmin.append(EditAdmin);
+    trAdmin.append(RemoveAdmin);
+    tbodyAdmin.append(trAdmin);
+
+    //
+
+  }
 }
 
 
