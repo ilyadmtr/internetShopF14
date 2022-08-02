@@ -105,6 +105,8 @@ $(document).mouseup(function (event) {
   if (event.target != popAdmin && popAdmin.has(event.target).length == 0) {
     $(".overlay").fadeOut();
     $(".admin-page").css("filter", "none");
+
+    if (action == "edit") clearInputs();
   }
 });
 //Popup Script end
@@ -181,6 +183,24 @@ function newProduct(
 }
 
 // New product end
+
+function clearInputs() {
+  let inputId = document.querySelector(".input-Id");
+  let inputTitle = document.querySelector(".input-Title");
+  let inputUrl = document.querySelector(".input-Url");
+  let inputContry = document.querySelector(".input-Contry");
+  let inputQuantity = document.querySelector(".input-Quantity");
+  let inputPrice = document.querySelector(".input-Price");
+
+  inputId.value = "";
+  inputTitle.value = "";
+  inputUrl.value = "";
+  inputContry.value = "";
+  inputQuantity.value = "";
+  inputPrice.value = "";
+
+  action = "";
+}
 
 function showEditProduct(
   innerIdAdmin,
