@@ -25,7 +25,7 @@ let productsArr = [
     },
 ]
 
-function setCartData(){
+function setCartData() {
     localStorage.setItem('products', JSON.stringify(productsArr));
     return false;
 }
@@ -34,7 +34,7 @@ let basketArrProducts = {}; //корзина
 
 $('document').ready(function () {
     setCartData();
-    loadProducts();
+    loadProducts();    
     checkProductsBasket();
 });
 
@@ -51,13 +51,13 @@ function loadProducts() {
                             <button class="number-minus" type="button"
                                     onclick="this.nextElementSibling.stepDown()">-
                             </button>
-                            <input class="quantity" type="number" placeholder='Enter quantity' min="1" max="${products.amount}" disabled>
+                            <input class="quantity" type="number" placeholder='Enter quantity' min="1" max="${products.amount}" readonly style="font-size:13px" >
                             <button class="number-plus" type="button"
                                     onclick="this.previousElementSibling.stepUp()">
                                 +
                             </button>
                         </div>
-                        <button class="add-button" data-id="${products.id}">Add</button>
+                        <button class="add-button" data-id="${products.id}" disabled >Add</button>
                     </div>
                 </div>
                 <div class="card__info">
@@ -71,39 +71,48 @@ function loadProducts() {
                 </div>
           </div>            `
 
-        let products__cards = document.querySelector('.products__cards');
-        products__cards.insertAdjacentHTML('beforeend', outProducts);
-            
-        }        
-    });
+            let products__cards = document.querySelector('.products__cards');
+            products__cards.insertAdjacentHTML('beforeend', outProducts);
 
+        }
+    });
+    $('button.number-plus').on('click', removeDesabledProducts);
     $('button.add-button').on('click', addProductsToBasket);
 }
 
+//разблокируем кнопку Add
+function removeDesabledProducts() {    
+    $(this).closest('.card').find('button').prop("disabled", false);   
+} 
+
 //добавляем в корзину
-function addProductsToBasket(e){
-    e.preventDefault();   
+function addProductsToBasket(e) {
+    e.preventDefault();
+
     let idProducts = $(this).attr('data-id'),
         inputProductsField = $(this).closest('.card').find('input'),
         quantityProducts = parseInt($(inputProductsField).val());
+    
     //проверяем наличие в корзине
-    if (basketArrProducts[idProducts] != undefined){
-        basketArrProducts[idProducts] = basketArrProducts[idProducts]+quantityProducts;   
-    }else{
-        basketArrProducts[idProducts]=quantityProducts;
-    } 
+    if (basketArrProducts[idProducts] != undefined) {
+        basketArrProducts[idProducts] = basketArrProducts[idProducts] + quantityProducts;
+    } else {
+        basketArrProducts[idProducts] = quantityProducts;
+    }
 
-    localStorage.setItem('basket',JSON.stringify(basketArrProducts));
+    localStorage.setItem('basket', JSON.stringify(basketArrProducts));
     // console.log(basketArrProducts);
 
     $('.quantity').val('');
-    $(this).html('Added');
+    $(this).html('✓ Added');
     $(this).attr('disabled', true);
+
 }
 
-function checkProductsBasket(){
+function checkProductsBasket() {
     //проверяем наличие корзины в localStorage
-    if(localStorage.getItem('basket') != null){
+    if (localStorage.getItem('basket') != null) {
         basketArrProducts = JSON.parse(localStorage.getItem('basket'));
-    }    
+    }
 }
+console.log(JSON.parse(localStorage.getItem('basket')));
