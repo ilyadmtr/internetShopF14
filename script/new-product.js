@@ -4,11 +4,7 @@ $('.create-btn').click(function () {
   $('.overlay').fadeIn();
 
 });
-
-
-
-var producsArr = []; // Object NewProduct 
-
+//input-popup-value
 var inputTitleAdmin = $('.input-Title').val();
 var inputUrlAdmin = $('.input-Url').val();
 var inputContryAdmin = $('.input-Contry').val();
@@ -16,78 +12,52 @@ var inputQuantityAdmin = $('.input-Quantity').val();
 var inputPriceAdmin = $('.input-Price').val();
 var innerIdAdmin = $('.input-Id').val();
 var erorTextAdmin = document.getElementById
-  ('eror-Text');
-
-
-
+('eror-Text');
+// 
 let btnPopupAdmin = document.getElementById('end-popup');
 btnPopupAdmin.addEventListener('click', function (event) {
+  //input-popup-value
   var inputTitleAdmin = $('.input-Title').val();
   var inputUrlAdmin = $('.input-Url').val();
   var inputContryAdmin = $('.input-Contry').val();
   var inputQuantityAdmin = $('.input-Quantity').val();
   var inputPriceAdmin = $('.input-Price').val();
   var innerIdAdmin = $('.input-Id').val();
+  // 
+  //Eror text
   var erorTextAdmin = document.getElementById
-    ('eror-Text');
-
-
-  // Set localStorage Start
-
-  function productObject(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin) {
-
-    var arrAdmin = {
-      id: innerIdAdmin,
-      name: inputTitleAdmin,
-      country: inputContryAdmin,
-      amount: inputQuantityAdmin,
-      price: inputPriceAdmin,
-      iconURl: inputUrlAdmin
-    };
-    producsArr.push(arrAdmin);
-
-    return localStorage.setItem('products', JSON.stringify(producsArr));
-
-  }
-
- 
-      productObject(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin);
-  
-
-
-  // Object NewProduct End
-
+  ('eror-Text');
+  //
+  //localStorage
+  productObject(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin);
 
   // /Проверка   введенных данных в input
- 
-  
   if (innerIdAdmin.length == 0) {
-  erorTextAdmin.innerText = 'Заполните все поля!';
-} else
+    erorTextAdmin.innerText = 'Заполните все поля!';
+  } else
   if (inputTitleAdmin.length == 0) {
     erorTextAdmin.innerText = 'Заполните все поля!';
   } else
-    if (inputUrlAdmin.length == 0) {
-      erorTextAdmin.innerText = 'Заполните все поля!';
-    } else
-      if (inputContryAdmin.length == 0) {
-        erorTextAdmin.innerText = 'Заполните все поля!';
-      } else
-        if (inputPriceAdmin.length == 0) {
-          erorTextAdmin.innerText = 'Заполните все поля!';
-        } else
-          if (inputQuantityAdmin <= 0 || inputQuantityAdmin.length == 0) {
-            erorTextAdmin.innerText = 'Не вводите "-" значения или заполните поле!';
-          } else {
+  if (inputUrlAdmin.length == 0) {
+    erorTextAdmin.innerText = 'Заполните все поля!';
+  } else
+  if (inputContryAdmin.length == 0) {
+    erorTextAdmin.innerText = 'Заполните все поля!';
+  } else
+  if (inputPriceAdmin.length == 0) {
+    erorTextAdmin.innerText = 'Заполните все поля!';
+  } else
+  if (inputQuantityAdmin <= 0 || inputQuantityAdmin.length == 0) {
+    erorTextAdmin.innerText = 'Не вводите "-" значения или заполните поле!';
+  } else {
 
-            $('#eror-Text').empty();
-            newProduct();
-            document.getElementById('myform').reset();
-            $('.overlay').fadeOut();
-            $('.admin-page').css('filter', 'none');
+    $('#eror-Text').empty();
+    newProduct();
+    document.getElementById('myform').reset();
+    $('.overlay').fadeOut();
+    $('.admin-page').css('filter', 'none');
 
-          }
-
+  }
 
   // /Проверка завершина
 });
@@ -101,15 +71,44 @@ $(document).mouseup(function (event) {
 });
 //Popup Script end
 //Получение данных с localStorage
-function getPeoducts() {
+function getProducts() {
   return JSON.parse(localStorage.getItem('products'));
 }
 
 //
+// localStorage Start
+var producsArr = []; // 
+function productObject(innerIdAdmin, inputTitleAdmin, inputUrlAdmin, inputContryAdmin, inputQuantityAdmin, inputPriceAdmin) {
+  var arr = [];
+  var arrAdmin = {
+    id: innerIdAdmin,
+    name: inputTitleAdmin,
+    country: inputContryAdmin,
+    amount: inputQuantityAdmin,
+    price: inputPriceAdmin,
+    iconURl: inputUrlAdmin
+  };
+  producsArr.push(arrAdmin);
+  let cities = producsArr.reduce((acc, id) => {
+    if (acc.map[id.id]) // если данный город уже был
+      return acc; // ничего не делаем, возвращаем уже собранное
+    acc.map[id.id] = true; // помечаем город, как обработанный
+    acc.cities.push(id); // добавляем объект в массив городов
+    return acc; // возвращаем собранное
+  }, {
+    map: {}, // здесь будут отмечаться обработанные города
+    cities: [] // здесь конечный массив уникальных городов
+  })
+    .cities; // получаем конечный массив
+  console.log(cities);
+  return localStorage.setItem('products', JSON.stringify(cities));
 
+}
+// End
 //Что бы товары оставись на вкладке
 window.addEventListener('load', function () {
-  var newProductAdmin = getPeoducts();
+  var newProductAdmin = getProducts();
+  console.log(newProductAdmin);
   console.log(newProductAdmin);
   if (newProductAdmin !== null) {
     //Перебор данных
@@ -163,7 +162,7 @@ window.addEventListener('load', function () {
 
 function newProduct() {
 
-  var newProductAdmin = getPeoducts();
+  var newProductAdmin = getProducts();
   if (newProductAdmin !== null) {
     //Перебор данных
 
