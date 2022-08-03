@@ -5,7 +5,8 @@ let productsArr = [
         country: 'Ukraine',
         amount: 30,
         price: 100,
-        iconURL: 'href'
+        iconURL: 'href',
+        quantity: 0
     },
     {
         name: 'Orange',
@@ -13,15 +14,17 @@ let productsArr = [
         country: 'Italy',
         amount: 20,
         price: 70,
-        iconURL: 'href'
+        iconURL: 'href',
+        quantity: 0
     },
     {
-        name: 'wathermelon',
+        name: 'Wathermelon',
         id: '3',
         country: 'Ukraine',
         amount: 10,
         price: 120,
-        iconURL: 'href'
+        iconURL: 'href',
+        quantity: 0
     },
 ]
 
@@ -30,11 +33,11 @@ function setCartData() {
     return false;
 }
 
-let basketArrProducts = {}; //корзина
+let basketArrProducts = []; //корзина
 
 $('document').ready(function () {
     setCartData();
-    loadProducts();    
+    loadProducts();
     checkProductsBasket();
 });
 
@@ -81,9 +84,9 @@ function loadProducts() {
 }
 
 //разблокируем кнопку Add
-function removeDesabledProducts() {    
-    $(this).closest('.card').find('button').prop("disabled", false);   
-} 
+function removeDesabledProducts() {
+    $(this).closest('.card').find('button').prop("disabled", false);
+}
 
 //добавляем в корзину
 function addProductsToBasket(e) {
@@ -91,23 +94,28 @@ function addProductsToBasket(e) {
 
     let idProducts = $(this).attr('data-id'),
         inputProductsField = $(this).closest('.card').find('input'),
-        quantityProducts = parseInt($(inputProductsField).val());
-    
+        quantityProducts = parseInt($(inputProductsField).val()),
+        basketArrProduct = {};
+        
     //проверяем наличие в корзине
-    if (basketArrProducts[idProducts] != undefined) {
-        basketArrProducts[idProducts] = basketArrProducts[idProducts] + quantityProducts;
-    } else {
-        basketArrProducts[idProducts] = quantityProducts;
+    if (basketArrProducts[idProducts-1] != undefined) {
+        basketArrProducts[idProducts-1].quantity += quantityProducts;
+    } else {     
+        basketArrProduct = JSON.parse(localStorage.getItem('products'))[idProducts-1];
+        basketArrProduct.quantity = quantityProducts;
+        basketArrProducts.push(basketArrProduct);
     }
 
+
     localStorage.setItem('basket', JSON.stringify(basketArrProducts));
-    // console.log(basketArrProducts);
+
 
     $('.quantity').val('');
     $(this).html('✓ Added');
     $(this).attr('disabled', true);
-
+    $(this).closest('.card').find('button').attr('disabled', true);
 }
+
 
 function checkProductsBasket() {
     //проверяем наличие корзины в localStorage
