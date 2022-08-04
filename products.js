@@ -1,42 +1,7 @@
-let productsArr = [
-    {
-        name: 'Apple',
-        id: '1',
-        country: 'Ukraine',
-        amount: 30,
-        price: 100,
-        iconURL: 'href',
-        quantity: 0
-    },
-    {
-        name: 'Orange',
-        id: '2',
-        country: 'Italy',
-        amount: 20,
-        price: 70,
-        iconURL: 'href',
-        quantity: 0
-    },
-    {
-        name: 'Wathermelon',
-        id: '3',
-        country: 'Ukraine',
-        amount: 10,
-        price: 120,
-        iconURL: 'href',
-        quantity: 0
-    },
-]
-
-function setCartData() {
-    localStorage.setItem('products', JSON.stringify(productsArr));
-    return false;
-}
 
 let basketArrProducts = []; //корзина
 
 $('document').ready(function () {
-    setCartData();
     loadProducts();
     checkProductsBasket();
 });
