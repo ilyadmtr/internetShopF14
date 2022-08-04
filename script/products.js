@@ -13,7 +13,7 @@ function loadProducts() {
             let outProducts = `
         <div class="card">
                 <div class="card__inputs-icon">
-                    <img src="./media/kreslo.png"/>
+                    <img src="../media/kreslo.png"/>
                     <div class="basket-form">
                         <div class="counter-form-input">
                             <button class="number-minus" type="button"
