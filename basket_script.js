@@ -1,37 +1,3 @@
-const productsArrBasket = [
-    {
-        name: 'Stylish Grey Chair(Ukraine)',
-        id: '1',
-        // country: 'Ukraine', ...считаю не нужным свойством
-        amount: 3,
-        price: 1.6,
-        // iconURL: 'href', ....считаю не нужным свойством
-        quantity: 1,
-    },
-    {
-        name: 'Stylish Grey Chair(China)',
-        id: '2',
-        // country: 'Ukraine',
-        amount: 30,
-        price: 2,
-        // iconURL: 'href', ...считаю не нужным свойством
-        quantity: 2,
-    },
-    {
-        name: 'Stylish Grey Chair(USA)',
-        id: '3',
-        // country: 'Ukraine', ...считаю не нужным свойством
-        amount: 30,
-        price: 2,
-        // iconURL: 'href', ...считаю не нужным свойством
-        quantity: 2,
-    },
-
-];
-// document.querySelector('')
-
-
-localStorage.setItem('basket', JSON.stringify(productsArrBasket));
 let getLocalStorageBasket = JSON.parse(localStorage.getItem('basket'));
 
 let tableBasket = document.querySelector('.basket-table');
