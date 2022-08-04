@@ -221,24 +221,26 @@ table {
 
 .main-info {
   width: 100%;
-  margin-top: 123px;
+  margin-top: 58px;
   position: relative;
 }
-
-.main-info__bc-sofa {
-  display: block;
+.main-info:after {
+  content: "";
   position: absolute;
   top: 150px;
   width: 753px;
+  height: 314px;
   right: 0;
+  background: url("../media/gray-sofa.png") 100% no-repeat;
 }
-
-.main-info__bc-gallery {
-  display: block;
+.main-info:before {
+  content: "";
   position: absolute;
-  top: -25%;
-  width: 376px;
-  right: 15%;
+  top: -50px;
+  width: 307px;
+  height: 203px;
+  right: 225px;
+  background: url("../media/set-gallery.png") 100% no-repeat;
 }
 
 .main-info__text-block {
@@ -381,16 +383,48 @@ table {
   border-bottom: 3px solid #66A96B;
   transition: 0.3s;
 }
-.basket-form .add-button {
+.basket-form button {
   background: #FFFFFF;
   padding: 10px;
   cursor: pointer;
   border: 1px solid #FFFFFF;
 }
-.basket-form .add-button:hover {
+.basket-form button:hover {
   border: 1px solid #787878;
   background: #787878;
   color: #fff;
+}
+
+.basket-form__input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+.basket-form__input input {
+  text-align: center;
+  font-size: 16px;
+  padding: 10px 10px;
+  width: 50%;
+  outline: none;
+}
+.basket-form__input input::-webkit-outer-spin-button, .basket-form__input input::-webkit-inner-spin-button {
+  display: none;
+}
+.basket-form__input button {
+  border: 2px solid white;
+  background: #787878;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  transition: 0.3s;
+}
+.basket-form__input button:hover {
+  background: white;
+  color: black;
+  border: 2px solid #787878;
 }
 
 .table-wrapper {
@@ -402,7 +436,7 @@ table {
 }
 
 .basket-table {
-  width: 1135px;
+  width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   height: auto;
@@ -444,7 +478,7 @@ table.basket-table th {
 }
 
 .admin-page-table {
-  width: 1135px;
+  width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
   height: auto;
@@ -783,3 +817,4 @@ table.admin-page-table th {
 /* <!-- Popup style End --> */
 
 /*# sourceMappingURL=styles.css.map */
+  
