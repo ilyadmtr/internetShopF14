@@ -1,7 +1,42 @@
+let productsArr = [
+    {
+        name: 'Apple',
+        id: '1',
+        country: 'Ukraine',
+        amount: 30,
+        price: 100,
+        iconURL: 'href',
+        quantity: 0
+    },
+    {
+        name: 'Orange',
+        id: '2',
+        country: 'Italy',
+        amount: 20,
+        price: 70,
+        iconURL: 'href',
+        quantity: 0
+    },
+    {
+        name: 'Wathermelon',
+        id: '3',
+        country: 'Ukraine',
+        amount: 10,
+        price: 120,
+        iconURL: 'href',
+        quantity: 0
+    },
+]
+
+function setCartData() {
+    localStorage.setItem('products', JSON.stringify(productsArr));
+    return false;
+}
 
 let basketArrProducts = []; //корзина
 
 $('document').ready(function () {
+    setCartData();
     loadProducts();
     checkProductsBasket();
 });
@@ -13,7 +48,7 @@ function loadProducts() {
             let outProducts = `
         <div class="card">
                 <div class="card__inputs-icon">
-                    <img src="../media/kreslo.png"/>
+                    <img src="./media/kreslo.png"/>
                     <div class="basket-form">
                         <div class="counter-form-input">
                             <button class="number-minus" type="button"
@@ -58,14 +93,14 @@ function addProductsToBasket(e) {
     e.preventDefault();
 
     let idProducts = $(this).attr('data-id'),
-        inputProductsField = $(this).closest('.card').find('input'),
-        quantityProducts = parseInt($(inputProductsField).val()),
-        basketArrProduct = {};
-        
+      inputProductsField = $(this).closest('.card').find('input'),
+      quantityProducts = parseInt($(inputProductsField).val()),
+      basketArrProduct = {};
+
     //проверяем наличие в корзине
     if (basketArrProducts[idProducts-1] != undefined) {
         basketArrProducts[idProducts-1].quantity += quantityProducts;
-    } else {     
+    } else {
         basketArrProduct = JSON.parse(localStorage.getItem('products'))[idProducts-1];
         basketArrProduct.quantity = quantityProducts;
         basketArrProducts.push(basketArrProduct);
